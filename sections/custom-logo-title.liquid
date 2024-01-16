@@ -1,0 +1,68 @@
+ <section class="logoWithTitle" style="background-color:{{ section.settings.sectionBg }};" >
+  <div class="page-width flex" style="align-items: center;">
+    
+      {% if section.settings.logo %} 
+            <img src="{{ section.settings.logo | img_url:'1000x' }}" alt="{{ section.settings.alt }}" />  
+        {% endif %}
+
+    {% if section.settings.content %}
+        <div>
+          <h2 style="color:{{ section.settings.textColor }}">{{ section.settings.content }}</h2>
+        </div>
+    {% endif %}
+
+    
+  </div>
+     
+    {% if section.settings.border %}
+   <div class="page-width">
+    <hr/>
+   </div>
+    {% endif %}
+</section>
+
+{% schema %}
+  {
+    "name": "Logo With Title", 
+    "settings": [
+      {
+        "type":"richtext",
+        "id":"content",
+        "label":"Content",
+        "default":"<p>Transform your paddle into a unique extension of your passion for pickleball with Pickleball Banz</p>"
+      }, 
+      {
+        "type":"image_picker",
+        "id":"logo",
+        "label":"Image"
+      } ,
+      {
+        "type":"color",
+        "id":"sectionBg",
+        "label":"Section background"
+      }, 
+      {
+        "type":"color",
+        "id":"textColor",
+        "label":"Title Color"
+      }  ,
+      {
+        "type":"checkbox",
+        "id":"border",
+        "label":"Bottom Border"
+      } 
+    ],
+       
+    "presets":[
+      {
+        "name":"Logo With Title"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

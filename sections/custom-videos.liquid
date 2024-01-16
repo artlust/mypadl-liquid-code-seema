@@ -1,0 +1,115 @@
+
+ <section class="videoSection" style="background-color:{{ section.settings.sectionBg }};" >
+  <div class="page-width " >
+    
+      
+    {% if section.settings.title %}
+        <div class="titleHeader">
+          <h2>{{ section.settings.title }}</h2>
+        </div>
+    {% endif %}
+
+    <div class="flex" style="align-items: center;">
+      {% for block in section.blocks %}
+      <div class="videoBox">
+        
+        {%- if block.settings.video_url.type == 'youtube' -%}
+          <iframe
+            src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}?enablejsapi=1"
+            class="js-youtube"
+            allow="autoplay; encrypted-media"
+            allowfullscreen 
+          ></iframe>
+        {%- else -%}
+          <iframe
+            src="https://player.vimeo.com/video/{{ block.settings.video_url.id }}"
+            class="js-vimeo"
+            allow="autoplay; encrypted-media"
+            allowfullscreen 
+          ></iframe>
+        {%- endif -%}
+        
+      </div>
+      {% endfor %}
+      
+    </div>
+
+
+      <div class="swiper VideoSwiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+      <div class="videoBox swiper-slide">
+        
+        {%- if block.settings.video_url.type == 'youtube' -%}
+          <iframe
+            src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}?enablejsapi=1"
+            class="js-youtube"
+            allow="autoplay; encrypted-media"
+            allowfullscreen 
+          ></iframe>
+        {%- else -%}
+          <iframe
+            src="https://player.vimeo.com/video/{{ block.settings.video_url.id }}"
+            class="js-vimeo"
+            allow="autoplay; encrypted-media"
+            allowfullscreen 
+          ></iframe>
+        {%- endif -%}
+        
+      </div>
+      {% endfor %}
+       
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+    
+  </div>
+     
+    
+</section>
+
+{% schema %}
+  {
+    "name": "Videos", 
+    "settings": [
+      {
+        "type":"text",
+        "id":"title",
+        "label":"Title",
+        "default":"Join The Personalization Revolution"
+      } 
+    ],
+    "blocks":[
+      {
+        "type":"video",
+        "name":"video",
+        "settings":[
+          
+            {
+              "type": "video_url",
+              "id": "video_url",
+              "accept": ["youtube", "vimeo"],
+              "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+              "label": "Video Url",
+              "info": "Youtube Vimeo"
+            }
+        ]
+      }
+    ],
+       
+    "presets":[
+      {
+        "name":"Videos"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+  
+ 
+  
+{% endjavascript %}

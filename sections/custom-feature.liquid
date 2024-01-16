@@ -1,0 +1,65 @@
+ <section class="featureSection" style="background-color:{{ section.settings.sectionBg }};" >
+  <div class="page-width flex" style="align-items: center;">
+    
+       {% for block in section.blocks %}
+         {% if block.settings.content %}
+              <div class="featureTitle">
+                 {% if block.settings.link %}<a href="{{ block.settings.link }}">{% endif %}
+                  <h4>{{ block.settings.content }}</h4>
+                 {% if block.settings.link %}</a>{% endif %}
+              </div>
+          {% endif %}
+        {% endfor %}
+    
+
+    
+  </div>
+     
+    
+   
+</section>
+
+{% schema %}
+  {
+    "name": "Feature Title", 
+    "settings": [
+      
+      {
+        "type":"color",
+        "id":"sectionBg",
+        "label":"Section background"
+      } 
+    ],
+    "blocks":[
+      {
+        "type":"feature",
+        "name":"Feature Text",
+        "settings":[
+          {
+            "type":"text",
+            "id":"content",
+            "label":"Content",
+            "default":"FREE SHIPPING"
+          }, 
+          {
+            "type":"url",
+            "id":"link",
+            "label":"Url"
+          } 
+        ]
+      }
+    ],
+       
+    "presets":[
+      {
+        "name":"Feature Title"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,98 @@
+ <section class="imageTextSection" style="background-color:{{ section.settings.sectionBg }};" >
+  <div class="page-width " style="align-items: center;">
+
+ {% if section.settings.title %}
+        <div class="titleHeader">
+          <h2>{{ section.settings.title }}</h2>
+        </div>
+    {% endif %}
+
+    <div class="flex">
+
+      {% if section.settings.content1 %}
+      <div class="imageTextItem">
+        <div>{{ section.settings.content1 }}</div>
+      </div>
+      {% endif %}
+      
+        {% if section.settings.image %} 
+          <div class="imageTextItem">
+            <img src="{{ section.settings.image | img_url:'1000x' }}" alt="{{ section.settings.image.alt }}" />  
+          </div>
+        {% endif %}
+        
+      
+      {% if section.settings.content2 %}
+      <div class="imageTextItem">
+        <div>{{ section.settings.content2 }}</div>
+      </div>
+      {% endif %}
+      
+    </div>
+      
+
+    {% if section.settings.content %}
+        <div class="footerText">
+          <h2>{{ section.settings.content }}</h2>
+        </div>
+    {% endif %}
+
+    
+  </div>
+     
+    
+</section>
+
+{% schema %}
+  {
+    "name": "Text Image Text", 
+    "settings": [
+      {
+        "type":"text",
+        "id":"title",
+        "label":"Title",
+        "default":"Transform your paddle into a unique extension of your passion for pickleball with Pickleball Banz"
+      }, 
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Image"
+      } ,
+      {
+        "type":"richtext",
+        "id":"content1",
+        "label":"Content",
+        "default":"<p>Transform your paddle into a unique extension of your passion for pickleball with Pickleball Banz</p>"
+      }, 
+      {
+        "type":"richtext",
+        "id":"content2",
+        "label":"Content",
+        "default":"<p>Transform your paddle into a unique extension of your passion for pickleball with Pickleball Banz</p>"
+      }, 
+      {
+        "type":"text",
+        "id":"content",
+        "label":"Bottom Content",
+        "default":"Transform your paddle into a unique extension of your passion for pickleball with Pickleball Banz"
+      }, 
+      {
+        "type":"color",
+        "id":"sectionBg",
+        "label":"Section background"
+      } 
+    ],
+       
+    "presets":[
+      {
+        "name":"Text Image Text"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

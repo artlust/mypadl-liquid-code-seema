@@ -1,0 +1,93 @@
+ <section class="gallerySection" style="background-color:{{ section.settings.sectionBg }};" >
+  <div class="{{ section.settings.layout }}   " style="align-items: center;">
+ 
+    {% if section.settings.title %}
+        <div class="titleHeader">
+          <h2>{{ section.settings.title }}</h2>
+        </div>
+    {% endif %}
+   
+
+    <div class="flex">
+ 
+      {% for block in section.blocks %}
+        {% if block.settings.image %} 
+          <div class="gallery gallery_{{ section.settings.column }}">
+            <img src="{{ block.settings.image | img_url:'1000x' }}" alt="{{ block.settings.image.alt }}" />  
+          </div>
+        {% endif %}
+      {% endfor %}
+        
+       
+    </div>
+      
+ 
+    
+  </div>
+     
+    
+</section>
+
+{% schema %}
+  {
+    "name": "Gallery Section", 
+    "blocks":[
+        {
+          "name":"Gallry",
+          "type":"gallery",
+          "settings":[
+            
+              {
+                "type":"image_picker",
+                "id":"image",
+                "label":"Image"
+              }
+          ]
+        }
+    ],
+    "settings": [
+       {
+        "type":"color",
+        "id":"sectionBg",
+        "label":"Section background"
+      }, 
+      {
+        "type":"text",
+        "id":"title",
+        "label":"Title" 
+      } ,
+      {
+        "type":"select",
+        "id":"column",
+        "label":"Gallery Column",
+        "options":[
+          {"value":"4","label":"4"},
+          {"value":"3","label":"3"}
+        ],
+        "default":"4"
+      },
+      {
+        "type":"select",
+        "id":"layout",
+        "label":"Section Width", 
+        "default":"page-width", 
+        "options":[
+          {"value":"page-width","label":"Container"},
+          {"value":"full-width","label":"Full"} 
+        ]
+      }
+    ],
+       
+    "presets":[
+      {
+        "name":"Gallery Section"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

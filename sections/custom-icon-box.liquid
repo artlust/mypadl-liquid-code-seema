@@ -1,0 +1,79 @@
+<section class="iconBoxSection" style="padding: 80px 20px;">
+  <div class="page-width " > 
+    {% if section.settings.title %}
+        <div class="titleHeader">
+          <h2>{{ section.settings.title }}</h2>
+        </div>
+    {% endif %}
+  </div>
+  
+  <div class="flex">
+    {% for block in section.blocks %}
+      <div class="iconBox">
+        {% if block.settings.icon == "star" %} 
+        <img src="{{ 'star.svg' | asset_url }}" />  
+        {% endif  %}
+      
+        {% if block.settings.icon == "crown" %} 
+        <img src="{{ 'crown.svg' | asset_url }}" />  
+        {% endif  %}
+         
+        <h2>{{ block.settings.title }}</h2>
+        <h3>{{ block.settings.subtitle }}</h3>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Icon Box",
+    "settings": [
+       {
+        "type":"text",
+        "id":"title",
+        "label":"Title" 
+      } 
+    ],
+    "blocks":[
+      {
+        "type":"icon",
+        "name":"Icon",
+        "settings":[
+          {
+            "type":"text",
+            "id":"title",
+            "label":"Title",
+            "default":"title"
+          },
+          {
+            "type":"textarea",
+            "id":"subtitle",
+            "label":"Sub Title",
+            "default":"description"
+          },
+          {
+            "type":"select",
+            "id":"icon",
+            "label":"Select Icon",
+            "options":[
+              {"value":"star","label":"Star"},
+              {"value":"crown","label":"Crown"}
+            ],
+            "default":"star"
+          }
+        ]
+      }
+    ],
+    "presets":[
+      {
+        "name":"Icon Box"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,83 @@
+ <section class="footerSection" style="background-color:{{ section.settings.sectionBg }};" >
+  <div class="page-width " style="align-items: center;">
+
+   
+      
+      
+        {% if section.settings.image %} 
+           
+            <img src="{{ section.settings.image | img_url:'1000x' }}" alt="{{ section.settings.image.alt }}" />  
+           
+        {% endif %}
+        
+      
+      {%- if section.settings.menu != blank -%}
+          <ul class="footer-block__details-content list-unstyled">
+            {%- for link in section.settings.menu.links -%}
+              <li>
+                <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}">
+                  {{ link.title }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      
+     
+    {% if section.settings.content %}
+        <div class="footerText">
+          <h2>{{ section.settings.content }}</h2>
+        </div>
+    {% endif %}
+
+    
+  </div>
+     
+    
+</section>
+
+{% schema %}
+  {
+    "name": "Simple Footer", 
+    "settings": [
+       
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Logo"
+      } ,
+       
+      {
+        "type":"link_list",
+        "id":"menu",
+        "label":"Menu" ,
+          "default": "footer"
+      }, 
+      {
+        "type":"text",
+        "id":"content",
+        "label":"Bottom Content",
+        "default":"&copy; 2023, Mypadl Powered By Shopify"
+      },
+       
+      {
+        "type":"color",
+        "id":"sectionBg",
+        "label":"Section background",
+        "default":"#F2F2F2"
+      } 
+    ],
+       
+    "presets":[
+      {
+        "name":"Simple Footer"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
